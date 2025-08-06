@@ -1,0 +1,26 @@
+wordpressUsername: admin
+wordpressPassword: admin123
+wordpressEmail: admin@example.com
+wordpressFirstName: Admin
+wordpressLastName: User
+wordpressBlogName: "My Blog"
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hostname: wordpress.local.nip.io
+  path: /
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  tls: false
+
+mariadb:
+  auth:
+    rootPassword: rootpass
+    username: bn_wordpress
+    password: wordpresspass
+    database: bitnami_wordpress
