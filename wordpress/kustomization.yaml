@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: wordpress
+    releaseName: wordpress
+    version: 18.2.6
+    repo: https://charts.bitnami.com/bitnami
+    valuesFile: values.yaml
+    namespace: wordpress
+
+namespace: wordpress
+resources:
+  - namespace.yaml
